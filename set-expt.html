@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="js/jspsych.js"></script>
+    <script src="js/jspsych-free-sort.js"></script>
+    <link rel="stylesheet" href="css/jspsych.css"></link>
+  </head>
+  <body></body>
+  <script>
+
+  var trials = {type:'free-sort', 
+                stimuli:[],
+                sort_area_width:1024,
+                stim_width:64
+              }
+  
+  var number = [1,2,3];
+  var color = ['R','G','B']; // Red, Green, Blue
+  var shape = ['P','O','D','R']; // Pill, Oval, Diamond, Rectangle
+
+  for (var i = 0; i < number.length; i++) {
+    for (var j = 0; j < color.length; j++) {
+      for (var k = 0; k < shape.length; k++) {
+        trials.stimuli.push("images/"+number[i]+color[j]+shape[i]+".png")
+      }
+    }
+  }
+
+  jsPsych.init({
+    timeline: [trials],
+    on_finish: function(){jsPsych.data.displayData();}
+  });
+
+
+  </script>
+</html>
+
